@@ -9,7 +9,15 @@ import SwiftUI
 
 struct HomeScreen: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            GeometryReader { geo in
+                RoundedRectangle(cornerRadius: 30.0, style: .continuous)
+                    .foregroundColor(.white)
+                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                
+                
+            }
+        }
     }
 }
 
