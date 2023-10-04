@@ -21,7 +21,7 @@ struct CategoryCardView: View {
                     Image("\(selectedCategory.category.rawValue)")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
+                        .frame(width: 30, height: 30)
                         .padding()
                 }
                 .padding(.leading)
@@ -31,6 +31,7 @@ struct CategoryCardView: View {
                         .font(.headline)
                     Text("spent ") +
                     Text("$\(selectedCategory.categoryTotalSpent) ")
+                        .bold()
                         .foregroundStyle(.green) +
                     Text("of ") +
                     Text("$\(selectedCategory.categoryBudget)")
@@ -61,7 +62,7 @@ struct CategoryCardView_Previews: PreviewProvider {
     static var previews: some View {
         // Create a Category instance
         let exampleCategory = Category(
-            category: .food,
+            category: .education,
             categoryBudget: 100,
             categoryTotalSpent: 20
         )
