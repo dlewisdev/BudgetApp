@@ -1,5 +1,5 @@
 //
-//  MultiColorProgressBar.swift
+//  MultiSegmentProgressBar.swift
 //  Budget App
 //
 //  Created by Danielle Lewis on 10/4/23.
@@ -8,22 +8,45 @@
 
 import SwiftUI
 
-//struct MultiColorProgressBar: View {
-//    var categories: [Category]
-//    var totalBudget: Double
-//    
-//    var body: some View {
-//        GeometryReader { geometry in
-//            HStack(spacing: 0) {
-//                ForEach(categories, id: \.category) { category in
-//                    Rectangle()
-//                        .foregroundColor(category.category.color)
-//                        .frame(width: geometry.size.width * CGFloat(category.categoryTotalSpent) / CGFloat(totalBudget))
-//                }
-//            }
-//        }
-//    }
-//}
+struct MultiSegmentProgressBar: View {
+    var categories: [Category]
+    var totalBudget: Double
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                
+                RoundedRectangle(cornerRadius: 10.0)
+                    .fill(Color.gray.opacity(0.5))
+                    .frame(width: geometry.size.width * 0.9, height: 50)
+                
+                
+                HStack(spacing: 0) {
+                    ForEach(categories.indices) { index in
+                        let progress = CGFloat(categories[index].categoryTotalSpent) / CGFloat(totalBudget)
+                        let width = geometry.size.width * progress
+                        
+                        if index == 0 {
+                            LeadingRoundedRectangle(radius: 10)
+                                .fill(categories[index].category.color)
+                                .frame(width: width, height: 50)
+                        } else if index == categories.count - 1 {
+                            TrailingRoundedRectangle(radius: 10)
+                                .fill(categories[index].category.color)
+                                .frame(width: width, height: 50)
+                        } else {
+                            Rectangle()
+                                .fill(categories[index].category.color)
+                                .frame(width: width, height: 50)
+                            
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+}
 
 struct LeadingRoundedRectangle: Shape {
     var radius: CGFloat
