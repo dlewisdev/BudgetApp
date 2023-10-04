@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Category {
+    @State var category: Categories
     @State var categoryBudget: Int
     @State var categoryTotalSpent: Int
     
