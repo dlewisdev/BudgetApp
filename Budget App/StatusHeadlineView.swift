@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct StatusHeadlineView: View {
-    @State var budget: Int
+    @State var totalBudget: Int
     @State var totalSpent: Int
     
     var available: Int {
-        budget - totalSpent
+        totalBudget - totalSpent
     }
     
     var body: some View {
@@ -38,7 +38,7 @@ struct StatusHeadlineView: View {
                 .frame(height: 30)
             VStack {
                 Text("Budget")
-                Text("$\(budget)")
+                Text("$\(totalBudget)")
                     .bold()
                     .font(.title3)
             }
@@ -48,6 +48,6 @@ struct StatusHeadlineView: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StatusHeadlineView(budget: 2000, totalSpent: 800)
+        StatusHeadlineView(totalBudget: 2000, totalSpent: 800)
     }
 }
