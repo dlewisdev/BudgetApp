@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Budget_AppApp: App {
+    @StateObject var viewModel = CategoriesViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: viewModel)
+            .environmentObject(viewModel)
         }
     }
 }

@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct StatusHeadlineView: View {
-    @State var totalBudget: Int
-    @State var totalSpent: Int
+    @ObservedObject var viewModel: CategoriesViewModel
     
-    var available: Int {
-        totalBudget - totalSpent
-    }
     
     var body: some View {
         
@@ -21,7 +17,7 @@ struct StatusHeadlineView: View {
             VStack {
                 Text("Spent")
                     .font(.subheadline)
-                Text("$\(totalSpent)")
+                Text("$\(viewModel.totalSpent)")
                     .bold()
                     .font(.title3)
             }
@@ -29,7 +25,7 @@ struct StatusHeadlineView: View {
                 .frame(height: 30)
             VStack {
                 Text("Available")
-                Text("$\(available)")
+                Text("$\(viewModel.available)")
                     .bold()
                     .font(.title2)
                     .foregroundStyle(.green)
@@ -38,7 +34,7 @@ struct StatusHeadlineView: View {
                 .frame(height: 30)
             VStack {
                 Text("Budget")
-                Text("$\(totalBudget)")
+                Text("$\(viewModel.totalBudget)")
                     .bold()
                     .font(.title3)
             }
@@ -48,6 +44,6 @@ struct StatusHeadlineView: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StatusHeadlineView(totalBudget: 2000, totalSpent: 800)
+        StatusHeadlineView(viewModel: CategoriesViewModel())
     }
 }

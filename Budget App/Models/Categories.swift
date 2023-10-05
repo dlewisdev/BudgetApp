@@ -8,17 +8,25 @@
 import Foundation
 import SwiftUI
 
-struct Category {
-    @State var category: Categories
-    @State var categoryBudget: Int
-    @State var categoryTotalSpent: Int
+struct Category: Identifiable, Codable  {
+    var category: Categories
+    var categoryBudget: Int
+    var categoryTotalSpent: Int
+    
+    var transactions: [Int] = []
     
     var categoryAvailableBudget: Int {
         return categoryBudget - categoryTotalSpent
     }
+
+    var id: String {
+        "\(category.rawValue)"
+    }
+    
 }
 
-enum Categories: String {
+
+enum Categories: String, Codable, CaseIterable {
     case food, shopping, transportation, education
     
     var label: String {

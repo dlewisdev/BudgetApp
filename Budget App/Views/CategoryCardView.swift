@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryCardView: View {
     
-    @Binding var selectedCategory: Category
+    var selectedCategory: Category
     
     var body: some View {
         VStack {
@@ -71,6 +71,6 @@ struct CategoryCardView_Previews: PreviewProvider {
         let selectedCategory = exampleCategory
         
         // Provide the binding to the CategoryCardView
-        CategoryCardView(selectedCategory: .constant(selectedCategory))
+        CategoryCardView(selectedCategory: exampleCategory)
     }
 }

@@ -13,14 +13,15 @@ struct DatePickerView: View {
             GeometryReader { geo in
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20.0)
+                    RoundedRectangle(cornerRadius: 5.0)
                         .foregroundStyle(Color.green.opacity(0.2))
-                        .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.05)
+                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.03)
                         .hAlign(.center)
                     HStack{
                         Label {
                             Text("September 2023")
                                 .bold()
+                                .font(.system(size: 13))
                                 
                         } icon: {
                             Image(systemName: "arrowtriangle.down.fill")

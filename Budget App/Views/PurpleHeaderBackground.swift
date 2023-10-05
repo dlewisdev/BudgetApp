@@ -11,6 +11,11 @@ struct PurpleHeaderBackground: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
+               
+                
+                Color(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 229.0 / 255.0)
+                    .ignoresSafeArea()
+                
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(width: geo.size.width, height: 150)
@@ -18,7 +23,6 @@ struct PurpleHeaderBackground: View {
                     .cornerRadius(25)
                     .ignoresSafeArea()
                 
-                    
                 }
             }
             

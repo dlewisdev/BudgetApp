@@ -5,14 +5,49 @@
 //  Created by Danielle Lewis on 10/3/23.
 //
 
+import UIKit
 import SwiftUI
 
 struct ContentView: View {
+    
+    var viewModel: CategoriesViewModel
+    
+
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            HomeView(viewModel: viewModel)
+                .tabItem {
+                    Image("home")
+                    Text("Home")
+                }
+            TrendsView()
+                .tabItem {
+                    Image("trends")
+                    Text("Trends")
+                }
+            Transactions()
+                .tabItem {
+                    Image("transactions")
+                    Text("Transactions")
+                }
+            Community()
+                .tabItem {
+                    Image("community")
+                    Text("Community")
+                }
+            Profile()
+                .tabItem {
+                    Image("profile")
+                    Text("Profile")
+                }
+        }
     }
 }
 
+
+
+
 #Preview {
-    ContentView()
+    ContentView(viewModel: CategoriesViewModel())
 }

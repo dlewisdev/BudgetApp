@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct MultiSegmentProgressBar: View {
-    var categories: [Category]
-    var totalBudget: Double
+    @ObservedObject var viewModel: CategoriesViewModel
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -18,26 +18,26 @@ struct MultiSegmentProgressBar: View {
                 
                 RoundedRectangle(cornerRadius: 10.0)
                     .fill(Color.gray.opacity(0.5))
-                    .frame(width: geometry.size.width * 0.9, height: 50)
+                    .frame(width: geometry.size.width * 0.9, height: 30)
                 
                 
                 HStack(spacing: 0) {
-                    ForEach(categories.indices) { index in
-                        let progress = CGFloat(categories[index].categoryTotalSpent) / CGFloat(totalBudget)
+                    ForEach(viewModel.categories.indices, id: \.self) { index in
+                        let progress = CGFloat(viewModel.categories[index].categoryTotalSpent) / CGFloat(viewModel.totalBudget)
                         let width = geometry.size.width * progress
                         
                         if index == 0 {
                             LeadingRoundedRectangle(radius: 10)
-                                .fill(categories[index].category.color)
-                                .frame(width: width, height: 50)
-                        } else if index == categories.count - 1 {
+                                .fill(viewModel.categories[index].category.color)
+                                .frame(width: width, height: 30)
+                        } else if index == viewModel.categories.count - 1 {
                             TrailingRoundedRectangle(radius: 10)
-                                .fill(categories[index].category.color)
-                                .frame(width: width, height: 50)
+                                .fill(viewModel.categories[index].category.color)
+                                .frame(width: width, height: 30)
                         } else {
                             Rectangle()
-                                .fill(categories[index].category.color)
-                                .frame(width: width, height: 50)
+                                .fill(viewModel.categories[index].category.color)
+                                .frame(width: width, height: 30)
                             
                         }
                     }
