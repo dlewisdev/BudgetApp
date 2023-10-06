@@ -18,11 +18,13 @@ struct CategoryCardView: View {
                     Circle()
                         .fill(selectedCategory.category.color)
                         .frame(width: 50)
+                        .accessibilityHidden(true)  // Hide decorative element
                     Image("\(selectedCategory.category.rawValue)")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30, height: 30)
                         .padding()
+                        .accessibilityLabel("\(selectedCategory.category.label) icon")
                 }
                 .padding(.leading)
                 
@@ -49,10 +51,13 @@ struct CategoryCardView: View {
                 }
                 .padding(.trailing)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Category \(selectedCategory.category.label), spent $\(selectedCategory.categoryTotalSpent) of $\(selectedCategory.categoryBudget), $\(selectedCategory.categoryAvailableBudget) left.")
             
             ProgressView(value: Double(selectedCategory.categoryTotalSpent),
                          total: Double(selectedCategory.categoryBudget))
             .progressViewStyle(LinearProgressViewStyle(tint: selectedCategory.category.color))
+            .accessibilityValue("\(Int((Double(selectedCategory.categoryTotalSpent) / Double(selectedCategory.categoryBudget)) * 100)) percent")
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(\.dismiss) var dismiss
     var viewModel: CategoriesViewModel
-    @State private var showAddCategoryView: Bool = false
+    @State private var showAddTransactionView: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -22,19 +22,21 @@ struct HomeView: View {
                 
                 Text("6 Month Snapshot")
                     .font(.title2).bold()
-                    .position(x: geo.size.width * 0.3, y: geo.size.height * 0.88)
+                    .position(x: geo.size.width * 0.3, y: geo.size.height * 0.82)
                 
                 RoundedRectangle(cornerRadius: 20.0)
                     .fill(.white)
-                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.13)
+                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.25)
                     .position(x: geo.size.width * 0.5, y: geo.size.height * 1)
                     .accessibilityLabel("Background card")
             }
             .overlay(alignment: .bottomTrailing) {
                 Button {
-                    showAddCategoryView = true
+                    showAddTransactionView = true
                 } label: {
                     Image(systemName: "plus")
+                        .accessibilityLabel("Add a new transaction")
+                        .accessibilityHint("Double tap to add a new transaction.")
                         .frame(width: 40, height: 40)
                         .font(.title3)
                         .fontWeight(.semibold)
@@ -45,10 +47,11 @@ struct HomeView: View {
                 .padding(15)
                 
             }
-            .sheet(isPresented: $showAddCategoryView, content: {
+            .sheet(isPresented: $showAddTransactionView, content: {
                 AddTransactionView(viewModel: viewModel)
+                    .presentationDetents([.medium])
+
             })
-            .presentationDetents([.medium])
 
         }
     }

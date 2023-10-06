@@ -20,6 +20,7 @@ struct StatusHeadlineView: View {
                 Text("$\(viewModel.totalSpent)")
                     .bold()
                     .font(.title3)
+                    .accessibilityLabel("Total spent: $\(viewModel.totalSpent)")
             }
             Divider()
                 .frame(height: 30)
@@ -29,6 +30,7 @@ struct StatusHeadlineView: View {
                     .bold()
                     .font(.title2)
                     .foregroundStyle(.green)
+                    .accessibilityLabel("Available: $\(viewModel.available)")
             }
             Divider()
                 .frame(height: 30)
@@ -37,6 +39,7 @@ struct StatusHeadlineView: View {
                 Text("$\(viewModel.totalBudget)")
                     .bold()
                     .font(.title3)
+                    .accessibilityLabel("Budget: $\(viewModel.totalBudget)")
             }
         }
     }

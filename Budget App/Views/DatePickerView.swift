@@ -15,13 +15,13 @@ struct DatePickerView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5.0)
                         .foregroundStyle(Color.green.opacity(0.2))
-                        .frame(width: geo.size.width * 0.3, height: geo.size.height * 0.03)
+                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.03)
                         .hAlign(.center)
                     HStack{
                         Label {
                             Text("October 2023")
                                 .bold()
-                                .font(.system(size: 13))
+                                .font(.headline)
                                 
                         } icon: {
                             Image(systemName: "arrowtriangle.down.fill")
@@ -34,6 +34,8 @@ struct DatePickerView: View {
                     }
                     
                 }
+                .accessibilityLabel("Date Picker, selected date is October 2023")
+                .accessibilityHint("Double tap to change the date.")
             }
         }
     }

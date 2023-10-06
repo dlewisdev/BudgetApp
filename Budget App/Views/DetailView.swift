@@ -70,6 +70,7 @@ struct DetailView: View {
             }
             .sheet(isPresented: $showAddCategoryView, content: {
                 AddCategoryView()
+                    .presentationDetents([.medium])
             })
         }
     }
