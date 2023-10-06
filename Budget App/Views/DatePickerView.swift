@@ -15,16 +15,19 @@ struct DatePickerView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5.0)
                         .foregroundStyle(Color.green.opacity(0.2))
-                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.03)
+                        .frame(width: geo.size.width * 0.3, height: geo.size.height * 0.03)
                         .hAlign(.center)
                     HStack{
                         Label {
-                            Text("September 2023")
+                            Text("October 2023")
                                 .bold()
                                 .font(.system(size: 13))
                                 
                         } icon: {
                             Image(systemName: "arrowtriangle.down.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 10, height: 8)
                         }
                         .labelStyle(RightIconLabelStyle())
                         .foregroundStyle(.green)
@@ -44,6 +47,7 @@ struct RightIconLabelStyle: LabelStyle {
         }
     }
 }
+
 
 #Preview {
     DatePickerView()
