@@ -15,6 +15,7 @@ struct Budget_AppApp: App {
         WindowGroup {
             ContentView(viewModel: viewModel)
             .environmentObject(viewModel)
+            .preferredColorScheme(.light)
         }
     }
 }
