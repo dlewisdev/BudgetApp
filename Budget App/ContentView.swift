@@ -16,32 +16,40 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            HomeView(viewModel: viewModel)
-                .tabItem {
-                    Image("home")
-                    Text("Home")
-                }
-            TrendsView()
-                .tabItem {
-                    Image("trends")
-                    Text("Trends")
-                }
-            Transactions()
-                .tabItem {
-                    Image("transactions")
-                    Text("Transactions")
-                }
-            Community()
-                .tabItem {
-                    Image("community")
-                    Text("Community")
-                }
-            Profile()
-                .tabItem {
-                    Image("profile")
-                    Text("Profile")
-                }
+            Group {
+                HomeView(viewModel: viewModel)
+                    .tabItem {
+                        Image("home")
+                        Text("Home")
+                    }
+                TrendsView()
+                    .tabItem {
+                        Image("trends")
+                        Text("Trends")
+                    }
+                Transactions()
+                    .tabItem {
+                        Image("transactions")
+                        Text("Transactions")
+                    }
+                Community()
+                    .tabItem {
+                        Image("community")
+                        Text("Community")
+                    }
+                Profile()
+                    .tabItem {
+                        Image("profile")
+                        Text("Profile")
+                    }
+                
+            }
+            .toolbarBackground(.white, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
         }
+       
+            
+        
     }
 }
 
