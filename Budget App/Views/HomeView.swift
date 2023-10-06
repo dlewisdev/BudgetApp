@@ -23,13 +23,19 @@ struct HomeView: View {
                 Text("6 Month Snapshot")
                     .font(.title2).bold()
                     .position(x: geo.size.width * 0.3, y: geo.size.height * 0.88)
+                
+                RoundedRectangle(cornerRadius: 20.0)
+                    .fill(.white)
+                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.13)
+                    .position(x: geo.size.width * 0.5, y: geo.size.height * 1)
+                    .accessibilityLabel("Background card")
             }
             .overlay(alignment: .bottomTrailing) {
                 Button {
                     showAddCategoryView = true
                 } label: {
                     Image(systemName: "plus")
-                        .frame(width: 50, height: 50)
+                        .frame(width: 40, height: 40)
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -47,6 +53,6 @@ struct HomeView: View {
         }
     }
 }
-//#Preview {
-//    HomeView(totalBudget: .constant(1000), totalSpent: .constant(250), categories: .constant(ExampleCategories.all))
-//}
+#Preview {
+    HomeView(viewModel: CategoriesViewModel())
+}
